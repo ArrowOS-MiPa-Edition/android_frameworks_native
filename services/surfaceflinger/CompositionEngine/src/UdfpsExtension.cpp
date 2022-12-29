@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The Android Open Source Project
+ * Copyright 2020 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,25 +14,14 @@
  * limitations under the License.
  */
 
-#ifndef _UI_INPUT_INPUTDISPATCHER_TOUCHEDWINDOW_H
-#define _UI_INPUT_INPUTDISPATCHER_TOUCHEDWINDOW_H
+#ifndef TARGET_PROVIDES_UDFPS_LIB
+#include <compositionengine/UdfpsExtension.h>
 
-namespace android {
-
-namespace gui {
-class WindowInfoHandle;
+uint32_t getUdfpsZOrder(uint32_t z, __unused bool touched) {
+    return z;
 }
 
-namespace inputdispatcher {
-
-// Focus tracking for touch.
-struct TouchedWindow {
-    sp<gui::WindowInfoHandle> windowHandle;
-    int32_t targetFlags;
-    BitSet32 pointerIds;
-};
-
-} // namespace inputdispatcher
-} // namespace android
-
-#endif // _UI_INPUT_INPUTDISPATCHER_TOUCHEDWINDOW_H
+uint64_t getUdfpsUsageBits(uint64_t usageBits, __unused bool touched) {
+    return usageBits;
+}
+#endif

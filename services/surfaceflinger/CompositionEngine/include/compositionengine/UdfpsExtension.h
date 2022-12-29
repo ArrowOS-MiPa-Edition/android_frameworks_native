@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The Android Open Source Project
+ * Copyright 2021-2022 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,25 +14,16 @@
  * limitations under the License.
  */
 
-#ifndef _UI_INPUT_INPUTDISPATCHER_TOUCHEDWINDOW_H
-#define _UI_INPUT_INPUTDISPATCHER_TOUCHEDWINDOW_H
+#include <stdint.h>
 
-namespace android {
+#ifndef __UDFPS_EXTENSION__H__
+#define __UDFPS_EXTENSION__H__
 
-namespace gui {
-class WindowInfoHandle;
-}
+#define UDFPS_BIOMETRIC_PROMPT_LAYER_NAME "BiometricPrompt"
+#define UDFPS_LAYER_NAME "UdfpsControllerOverlay"
+#define UDFPS_TOUCHED_LAYER_NAME "SurfaceView[UdfpsControllerOverlay](BLAST)"
 
-namespace inputdispatcher {
+extern uint32_t getUdfpsZOrder(uint32_t z, bool touched);
+extern uint64_t getUdfpsUsageBits(uint64_t usageBits, bool touched);
 
-// Focus tracking for touch.
-struct TouchedWindow {
-    sp<gui::WindowInfoHandle> windowHandle;
-    int32_t targetFlags;
-    BitSet32 pointerIds;
-};
-
-} // namespace inputdispatcher
-} // namespace android
-
-#endif // _UI_INPUT_INPUTDISPATCHER_TOUCHEDWINDOW_H
+#endif /* __UDFPS_EXTENSION__H__ */
